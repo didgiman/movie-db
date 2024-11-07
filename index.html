@@ -98,7 +98,7 @@
 
         function searchMovies(query, page) {
             // API endpoint construction
-            let url = `http://www.omdbapi.com/?apikey=a8770646&s=${query}&page=${page}`;
+            let url = `https://www.omdbapi.com/?apikey=a8770646&s=${query}&page=${page}`;
 
             fetch(url)
                 .then(response => response.json())
@@ -166,7 +166,7 @@
                 let imdbID = button.getAttribute('data-bs-movieid');
 
                 // Retrieve movie details
-                let url = "http://www.omdbapi.com/?apikey=a8770646&i=" + imdbID;
+                let url = "https://www.omdbapi.com/?apikey=a8770646&i=" + imdbID;
 
                 fetch(url)
                     .then(response => response.json())
