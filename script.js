@@ -89,7 +89,7 @@ function showPagination(numItems) {
 
     pagination.innerHTML = `
                 <nav aria-label="Search results navigation">
-                    <ul class="pagination justify-content-center">
+                    <ul class="pagination justify-content-center flex-wrap">
                         <li class="page-item ${resultsPage == 1 ? 'disabled' : ''}"><a class="page-link" href="#">Previous</a></li>
                         ${paginationPages}
                         <li class="page-item ${resultsPage == totalPages ? 'disabled' : ''}"><a class="page-link" href="#">Next</a></li>
@@ -105,16 +105,16 @@ function showSearchResults(query, data) {
     results.innerHTML = "";
 
     if (data.Response == "False") {
-        searchheader.innerHTML = `<h2>No results found for: ${query}</h2>`;
+        searchheader.innerHTML = `<h2 class="text-white">No results found for: ${query}</h2>`;
         return;
     }
 
-    searchheader.innerHTML = `<h2>Search results for: ${query} (${data.totalResults} result)</h2>`;
+    searchheader.innerHTML = `<h2 class="text-white">Search results for: ${query} (${data.totalResults} result)</h2>`;
 
     // iterate over the search results
     for (let i = 0; i < data.Search.length; i++) {
         results.innerHTML += `
-                    <div class="card m-2">
+                    <div class="card m-2 bg-dark-subtle">
                         <img src="${data.Search[i].Poster != "N/A" ? data.Search[i].Poster : "placeholder.gif"}" class="card-img-top" alt="${data.Search[i].Title}">
                         <div class="card-body">
                             <h5 class="card-title">${data.Search[i].Title}</h5>
