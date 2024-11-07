@@ -37,6 +37,16 @@ pagination.addEventListener("click", function (event) {
 });
 
 function searchMovies(query, page) {
+
+    // Show spinner while loading
+    results.innerHTML = `
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    `;
+
     // API endpoint construction
     let url = `https://www.omdbapi.com/?apikey=a8770646&s=${query}&page=${page}`;
 
@@ -89,7 +99,7 @@ function showPagination(numItems) {
 }
 
 function showSearchResults(query, data) {
-    console.log(data);
+    //console.log(data);
 
     // Clear previous search results
     results.innerHTML = "";
@@ -121,6 +131,17 @@ function showSearchResults(query, data) {
 const movieModal = document.getElementById('movieModal');
 if (movieModal) {
     movieModal.addEventListener('show.bs.modal', event => {
+
+        // Show spinner while loading
+        let modalBody = document.getElementById("modalBody");
+        modalBody.innerHTML = `
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            `;
+
         // Button that triggered the modal
         const button = event.relatedTarget;
 
