@@ -45,14 +45,26 @@ function searchMovies(query, page) {
         .then(data => {
             //console.log(data);
 
-            showPagination(data.totalResults);
+            if (data.Response == "False") {
+                showPagination(0);
+            } else {
+                showPagination(data.totalResults);
+            }
 
             showSearchResults(query, data);
         });
 }
 
 function showPagination(numItems) {
+
     let paginationPages = ``;
+
+    pagination.innerHTML = ``;
+
+    if (numItems == 0) {
+        return;
+    }
+
     totalPages = Math.ceil(numItems / 10);
 
     let maxPages = 10;
@@ -77,10 +89,15 @@ function showPagination(numItems) {
 }
 
 function showSearchResults(query, data) {
-    //console.log(data);
+    console.log(data);
 
     // Clear previous search results
     results.innerHTML = "";
+
+    if (data.Response == "False") {
+        searchheader.innerHTML = `<h2>No results found for: ${query}</h2>`;
+        return;
+    }
 
     searchheader.innerHTML = `<h2>Search results for: ${query} (${data.totalResults} result)</h2>`;
 
