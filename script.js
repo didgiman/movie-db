@@ -109,7 +109,7 @@ function showSearchResults(query, data) {
         return;
     }
 
-    searchheader.innerHTML = `<h2 class="text-white">Search results for: ${query} (${data.totalResults} result)</h2>`;
+    searchheader.innerHTML = `<h2 class="text-white">Search results for: ${query} (${data.totalResults} results)</h2>`;
 
     // iterate over the search results
     for (let i = 0; i < data.Search.length; i++) {
