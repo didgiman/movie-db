@@ -55,8 +55,13 @@ function showPagination(numItems) {
     let paginationPages = ``;
     totalPages = Math.ceil(numItems / 10);
 
-    // Iterate over the number of pages
-    for (let i = 1; i <= totalPages; i++) {
+    let maxPages = 10;
+
+    let startPage = Math.max(1, resultsPage - Math.floor(maxPages / 2));
+    let endPage = Math.min(totalPages, startPage + maxPages - 1);
+
+    // Iterate over the number of pages to show
+    for (let i = startPage; i <= endPage; i++) {
         paginationPages += `<li class="page-item ${i == resultsPage ? 'active' : ''}"><a class="page-link" href="#">${i}</a></li>`;
     }
 
