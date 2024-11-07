@@ -115,7 +115,7 @@ function showSearchResults(query, data) {
     for (let i = 0; i < data.Search.length; i++) {
         results.innerHTML += `
                     <div class="card m-2">
-                        <img src="${data.Search[i].Poster != "N/A" ? data.Search[i].Poster : ""}" class="card-img-top" alt="${data.Search[i].Title}">
+                        <img src="${data.Search[i].Poster != "N/A" ? data.Search[i].Poster : "placeholder.gif"}" class="card-img-top" alt="${data.Search[i].Title}">
                         <div class="card-body">
                             <h5 class="card-title">${data.Search[i].Title}</h5>
                             <p class="card-text">Released: ${data.Search[i].Year}</p>
@@ -167,7 +167,7 @@ if (movieModal) {
                             <p>Plot: ${data.Plot}</p>
                             <p>Released: ${data.Released}</p>
                             <p>imdbRating: ${data.imdbRating}</p>
-                            <img src="${data.Poster}" class="img-fluid w-100" alt="${data.Title}">
+                            <img src="${data.Poster != "N/A" ? data.Poster : "placeholder.gif"}" class="img-fluid w-100" alt="${data.Title}">
                         `;
             });
 
