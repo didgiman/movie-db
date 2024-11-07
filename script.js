@@ -47,7 +47,7 @@ function searchMovies(query, page) {
 
             showPagination(data.totalResults);
 
-            showSearchResults(data);
+            showSearchResults(query, data);
         });
 }
 
@@ -62,7 +62,7 @@ function showPagination(numItems) {
 
     pagination.innerHTML = `
                 <nav aria-label="Search results navigation">
-                    <ul class="pagination">
+                    <ul class="pagination justify-content-center">
                         <li class="page-item ${resultsPage == 1 ? 'disabled' : ''}"><a class="page-link" href="#">Previous</a></li>
                         ${paginationPages}
                         <li class="page-item ${resultsPage == totalPages ? 'disabled' : ''}"><a class="page-link" href="#">Next</a></li>
@@ -71,13 +71,13 @@ function showPagination(numItems) {
             `;
 }
 
-function showSearchResults(data) {
+function showSearchResults(query, data) {
     //console.log(data);
 
     // Clear previous search results
     results.innerHTML = "";
 
-    searchheader.innerHTML = `<h2>Search results for: ${searchValue}</h2>`;
+    searchheader.innerHTML = `<h2>Search results for: ${query} (${data.totalResults} result)</h2>`;
 
     // iterate over the search results
     for (let i = 0; i < data.Search.length; i++) {
